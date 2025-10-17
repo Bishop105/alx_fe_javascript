@@ -1,9 +1,10 @@
-// Array to store quotes
+// Load quotes from local storage or use default quotes
 let quotes = JSON.parse(localStorage.getItem('quotes')) || [
     { text: "The greatest glory in living lies not in never falling, but in rising every time we fall.", category: "Inspiration" },
     { text: "The way to get started is to quit talking and begin doing.", category: "Motivation" },
-    { text: "Life is what happens when you're busy making other plans.", category: "Life" } ("createElement", "appendChild")
+    { text: "Life is what happens when you're busy making other plans.", category: "Life" }
 ];
+
 // Load the last selected category from local storage
 let lastSelectedCategory = localStorage.getItem('lastSelectedCategory') || 'all';
 
@@ -17,9 +18,14 @@ function displayQuotes(filteredQuotes) {
         return;
     }
 
-    filteredQuotes.forEach(quote => {
-        quoteDisplay.innerHTML += `<p>${quote.text}</p><p><em>Category: ${quote.category}</em></p>`;
-    });
+    // Select a random quote from the filtered quotes
+    const randomIndex = Math.floor(Math.random() * filteredQuotes.length);
+    const randomQuote = filteredQuotes[randomIndex];
+
+    quoteDisplay.innerHTML = `
+        <p>${randomQuote.text}</p>
+        <p><em>Category: ${randomQuote.category}</em></p>
+    `;
 }
 
 // Function to show a random quote or filtered quotes
