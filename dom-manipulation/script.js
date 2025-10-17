@@ -1,5 +1,3 @@
-// script.js
-
 // Array to store quotes
 let quotes = [
     { text: "The greatest glory in living lies not in never falling, but in rising every time we fall.", category: "Inspiration" },
