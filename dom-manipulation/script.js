@@ -6,7 +6,7 @@ let quotes = JSON.parse(localStorage.getItem('quotes')) || [
 ];
 
 // Load the last selected category from local storage
-let lastSelectedCategory = localStorage.getItem('lastSelectedCategory') || 'all';
+let lastSelectedCategory = localStorage.getItem("selectedCategory") || 'all';
 
 // Function to display quotes based on the selected category
 function displayQuotes(filteredQuotes) {
@@ -31,7 +31,7 @@ function displayQuotes(filteredQuotes) {
 // Function to show a random quote or filtered quotes
 function showRandomQuote() {
     const filteredQuotes = quotes.filter(quote => 
-        lastSelectedCategory === 'all' || quote.category === lastSelectedCategory
+        lastSelectedCategory === 'all' || quote.category === selectedCategory
     );
     displayQuotes(filteredQuotes);
 }
