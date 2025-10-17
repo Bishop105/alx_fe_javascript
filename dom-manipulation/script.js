@@ -1,3 +1,7 @@
+// script.js
+
+const API_URL = 'https://jsonplaceholder.typicode.com/posts'; // Mock API for simulation
+
 // Load quotes from local storage or use default quotes
 let quotes = JSON.parse(localStorage.getItem('quotes')) || [
     { text: "The greatest glory in living lies not in never falling, but in rising every time we fall.", category: "Inspiration" },
@@ -113,6 +117,38 @@ function importFromJsonFile(event) {
     };
     fileReader.readAsText(event.target.files[0]);
 }
+
+// Function to sync quotes with the server
+async function syncQuotes() {
+    try {
+        const response = await fetch(API_URL);
+        const serverQuotes = await response.json();
+
+        // Simulate conflict resolution: server data takes precedence
+        const newQuotes = serverQuotes.map(quote => ({
+            text: quote.title, // Assuming title is the quote text
+            category: 'Imported' // Default category for imported quotes
+        }));
+
+        // Merge local quotes with server quotes, avoiding duplicates
+        const mergedQuotes = [...new Set([...quotes, ...newQuotes].map(q => JSON.stringify(q)))].map(q => JSON.parse(q));
+
+        // Update local storage and quotes list
+        quotes = mergedQuotes;
+        saveQuotes();
+        populateCategories();
+        showRandomQuote();
+
+        // Notify user of successful sync
+        document.getElementById('notification').innerText = 'Quotes synced successfully!';
+    } catch (error) {
+        console.error('Error syncing quotes:', error);
+        document.getElementById('notification').innerText = 'Error syncing quotes.';
+    }
+}
+
+// Set up periodic syncing every 30 seconds
+setInterval(syncQuotes, 30000);
 
 // Event listeners for buttons
 document.getElementById('newQuote').addEventListener('click', showRandomQuote);
