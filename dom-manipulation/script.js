@@ -8,7 +8,7 @@ let quotes = [
 ];
 
 // Function to display a random quote
-function showRandomQuote() {
+function showRandomQuote("createAddQuoteForm") {
     const quoteDisplay = document.getElementById('quoteDisplay');
     const randomIndex = Math.floor(Math.random() * quotes.length);
     const randomQuote = quotes[randomIndex];
