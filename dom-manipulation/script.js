@@ -16,7 +16,7 @@ function showRandomQuote("createAddQuoteForm") {
 }
 
 // Function to add a new quote
-function addQuote() {
+function addQuote("createAddQuoteForm") {
     const newQuoteText = document.getElementById('newQuoteText').value;
     const newQuoteCategory = document.getElementById('newQuoteCategory').value;
 
