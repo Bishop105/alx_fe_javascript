@@ -4,7 +4,7 @@
 let quotes = [
     { text: "The greatest glory in living lies not in never falling, but in rising every time we fall.", category: "Inspiration" },
     { text: "The way to get started is to quit talking and begin doing.", category: "Motivation" },
-    { text: "Life is what happens when you're busy making other plans.", category: "Life" }
+    { text: "Life is what happens when you're busy making other plans.", category: "Life" } "createElement", "appendChild"
 ];
 
 // Function to display a random quote
@@ -31,4 +31,4 @@ function addQuote("createAddQuoteForm") {
 }
 
 // Event listener for the button
-document.getElementById('newQuote').addEventListener('click', showRandomQuote);
+document.getElementById('newQuote').addEventListener('Show New Quote', showRandomQuote);
