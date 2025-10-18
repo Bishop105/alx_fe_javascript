@@ -138,7 +138,7 @@ async function syncQuotes() {
         showRandomQuote();
 
         // Notify user of successful sync
-        document.getElementById('notification').innerText = 'Quotes synced successfully!';
+        document.getElementById('notification').innerText = 'Quotes synced with server!';
     } catch (error) {
         console.error('Error syncing quotes:', error);
         document.getElementById('notification').innerText = 'Error syncing quotes.';
