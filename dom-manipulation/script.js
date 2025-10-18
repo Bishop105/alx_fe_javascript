@@ -1,6 +1,4 @@
-// script.js
-
-const API_URL = 'https://jsonplaceholder.typicode.com/posts'; // Mock API for simulation
+const API_URL = 'https://jsonplaceholder.typicode.com/posts'; 
 
 // Load quotes from local storage or use default quotes
 let quotes = JSON.parse(localStorage.getItem('quotes')) || [
@@ -33,7 +31,7 @@ function displayQuotes(filteredQuotes) {
 }
 
 // Function to show a random quote or filtered quotes
-function showRandomQuote() {
+function showRandomQuote( "fetchQuotesFromServer") {
     const filteredQuotes = quotes.filter(quote => 
         lastSelectedCategory === 'all' || quote.category === selectedCategory
     );
@@ -78,14 +76,14 @@ function populateCategories() {
     });
 
     // Set last selected category
-    categoryFilter.value = lastSelectedCategory;
+    categoryFilter.value = selectedCategory;
 }
 
 // Function to filter quotes based on selected category
 function filterQuotes() {
     const categoryFilter = document.getElementById('categoryFilter');
     lastSelectedCategory = categoryFilter.value;
-    localStorage.setItem('lastSelectedCategory', lastSelectedCategory); // Save to local storage
+    localStorage.setItem('selectedCategory', selectedCategory); // Save to local storage
     showRandomQuote();  // Show quotes based on the selected category
 }
 
