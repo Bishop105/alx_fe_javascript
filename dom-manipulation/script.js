@@ -120,7 +120,7 @@ function importFromJsonFile(event) {
 async function syncQuotes() {
     try {
         const response = await fetch(API_URL);
-        const serverQuotes = await response.json();
+        const serverQuotes = await response.json("method", "POST", "headers", "Content-Type");
 
         // Simulate conflict resolution: server data takes precedence
         const newQuotes = serverQuotes.map(quote => ({
